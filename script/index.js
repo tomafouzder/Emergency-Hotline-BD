@@ -14,11 +14,27 @@ for (let heartButton of heartbtns) {
     })
 }
 
+// copy-button
+const copybtns = document.getElementsByClassName("copy-btn")
+for (let copyButton of copybtns) {
+    copyButton.addEventListener("click", function () {
 
+        const serviceNumber = copyButton.parentNode.parentNode.parentNode.childNodes[3].childNodes[5].innerText;
+        console.log(serviceNumber)
+
+        navigator.clipboard.writeText(serviceNumber)
+
+        alert(`Copied number: ${serviceNumber}`);
+
+
+        const copyCount = getElement("copy-count").innerText;
+        const currentCopy = Number(copyCount) + Number(1);
+        getElement("copy-count").innerText = currentCopy;
+    })
+}
 
 // cart add 
 const callcartbtn = document.getElementsByClassName("call-cart-btn")
-// console.log(callcartbtn);
 
 for (let cartButton of callcartbtn) {
     cartButton.addEventListener("click", function () {
@@ -35,12 +51,20 @@ for (let cartButton of callcartbtn) {
             second: '2-digit',
             hour12: true
         });
-        alert(`Calling ${serviceTitle} ${serviceNumber}...`);
+
 
 
         const totalCoins = getElement("total-coins").innerText;
-        const currentCoins = Number(totalCoins) - Number(20);
-        getElement("total-coins").innerText = currentCoins;
+        if (totalCoins < 20) {
+            alert("No coin for this service calling ");
+            return;
+        }
+        else {
+            alert(`Calling ${serviceTitle} ${serviceNumber}...`);
+            const currentCoins = Number(totalCoins) - Number(20);
+            getElement("total-coins").innerText = currentCoins;
+        }
+
 
 
 
@@ -61,4 +85,12 @@ for (let cartButton of callcartbtn) {
         cartAddSections.append(newCart);
 
     })
-}
+};
+
+
+// clear button
+document.getElementById("btn-clear").addEventListener("click", function () {
+    const cartAddSections = getElement("cart-add-sections");
+    cartAddSections.innerHTML = "";
+
+});
