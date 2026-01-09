@@ -1,3 +1,6 @@
+### 1.EMERGENCY HOTLINE PROJECTS
+
+
 ### 1.What is the difference between getElementById, getElementsByClassName, and querySelector / querySelectorAll?
 
 - **getElementById("id")** → selects a single element by its id. Returns the element or null.

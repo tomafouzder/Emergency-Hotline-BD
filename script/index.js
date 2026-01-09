@@ -12,7 +12,7 @@ for (let heartButton of heartbtns) {
         const currentHeart = Number(heartCount) + Number(1);
         getElement("heart-count").innerText = currentHeart;
     })
-}
+};
 
 // copy-button
 const copybtns = document.getElementsByClassName("copy-btn")
@@ -20,7 +20,6 @@ for (let copyButton of copybtns) {
     copyButton.addEventListener("click", function () {
 
         const serviceNumber = copyButton.parentNode.parentNode.parentNode.childNodes[3].childNodes[5].innerText;
-        console.log(serviceNumber)
 
         navigator.clipboard.writeText(serviceNumber)
 
